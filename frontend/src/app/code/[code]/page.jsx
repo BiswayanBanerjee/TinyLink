@@ -1,3 +1,4 @@
+"use client";
 import { fetchLinkStats } from "@/lib/api";
 import styles from "./page.module.css";
 

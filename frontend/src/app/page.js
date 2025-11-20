@@ -1,3 +1,4 @@
+"use client";
 import AddLinkForm from "@/components/AddLinkForm";
 import LinksTable from "@/components/LinksTable";
 import { fetchLinks } from "@/lib/api";
