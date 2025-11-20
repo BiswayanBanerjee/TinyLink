@@ -1,0 +1,22 @@
+.wrapper {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+.box {
+  padding: 20px;
+  border-radius: 12px;
+  background: #fafafa;
+  border: 1px solid #ddd;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 14px;
+  background: black;
+  color: white;
+  border-radius: 6px;
+  text-decoration: none;
+}

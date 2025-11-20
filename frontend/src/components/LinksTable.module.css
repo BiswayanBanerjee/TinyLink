@@ -1,0 +1,125 @@
+.wrapper {
+  margin-top: 30px;
+}
+
+/* Desktop table layout */
+.wrapper table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.wrapper thead {
+  background: #eee;
+}
+
+.wrapper th,
+.wrapper td {
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+}
+
+.wrapper td {
+  text-align: center;
+}
+
+.wrapper h2 {
+  margin-bottom: 10px;
+}
+
+.url {
+  max-width: 250px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.actions button {
+  margin-right: 8px;
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+.actions button {
+  background: #333;
+  color: white;
+}
+
+.actions .delete {
+  background: #e74c3c !important;
+}
+
+.empty {
+  color: gray;
+  font-style: italic;
+}
+
+/* -------------------------------------------------- */
+/* RESPONSIVE DESIGN - MOBILE (table becomes cards)   */
+/* -------------------------------------------------- */
+@media (max-width: 768px) {
+  .wrapper table,
+  .wrapper thead,
+  .wrapper tbody,
+  .wrapper th,
+  .wrapper td,
+  .wrapper tr {
+    display: block;
+    width: 100%;
+  }
+
+  .wrapper thead {
+    display: none; /* hide table header */
+  }
+
+  .wrapper tr {
+    margin-bottom: 15px;
+    background: #fafafa;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 12px;
+  }
+
+  .wrapper td {
+    text-align: left;
+    padding: 8px 5px;
+    border-bottom: none;
+  }
+
+  /* Add labels before each value */
+  .wrapper td:nth-child(1)::before {
+    content: "Code: ";
+    font-weight: bold;
+  }
+
+  .wrapper td:nth-child(2)::before {
+    content: "URL: ";
+    font-weight: bold;
+  }
+
+  .wrapper td:nth-child(3)::before {
+    content: "Clicks: ";
+    font-weight: bold;
+  }
+
+  .wrapper td:nth-child(4)::before {
+    content: "Last Clicked: ";
+    font-weight: bold;
+  }
+
+  .wrapper td:nth-child(5)::before {
+    content: "Actions: ";
+    font-weight: bold;
+  }
+
+  .actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 8px;
+  }
+
+  .actions button {
+    flex: 1;
+  }
+}
