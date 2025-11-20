@@ -2,6 +2,7 @@
 import AddLinkForm from "@/components/AddLinkForm";
 import LinksTable from "@/components/LinksTable";
 import { fetchLinks } from "@/lib/api";
+import { useEffect, useState } from "react";
 
 export default function Page() {
   const [links, setLinks] = useState([]);
