@@ -17,7 +17,7 @@ app.use(express.json());
 
 // Correct order
 app.use("/api/links", linksRoutes);
-app.use("/healthz", healthRoutes);   // <= MUST BE BEFORE REDIRECT ROUTE
+app.use("/healthz", healthRoutes); // <= MUST BE BEFORE REDIRECT ROUTE
 
 // Redirect Route (keep at the end)
 app.get("/:code", async (req, res) => {
