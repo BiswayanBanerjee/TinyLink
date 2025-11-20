@@ -2,12 +2,24 @@ import express from "express";
 import cors from "cors";
 import linksRoutes from "./routes/links.routes.js";
 import healthRoutes from "./routes/health.routes.js";
+import prisma from "./utils/db.js";
 
 const app = express();
 
-import prisma from "./utils/db.js";
+app.use(
+  cors({
+    origin: "*",
+    methods: "GET,POST,DELETE,PUT,OPTIONS",
+  })
+);
 
-// Redirect Route
+app.use(express.json());
+
+// Correct order
+app.use("/api/links", linksRoutes);
+app.use("/healthz", healthRoutes);   // <= MUST BE BEFORE REDIRECT ROUTE
+
+// Redirect Route (keep at the end)
 app.get("/:code", async (req, res) => {
   const { code } = req.params;
 
@@ -20,7 +32,6 @@ app.get("/:code", async (req, res) => {
       return res.status(404).send("Not found");
     }
 
-    // increment click count
     await prisma.link.update({
       where: { code },
       data: {
@@ -35,13 +46,5 @@ app.get("/:code", async (req, res) => {
     return res.status(500).send("Server error");
   }
 });
-
-
-app.use(cors());
-app.use(express.json());
-
-// Routes
-app.use("/api/links", linksRoutes);
-app.use("/healthz", healthRoutes);
 
 export default app;
