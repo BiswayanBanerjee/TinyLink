@@ -17,10 +17,19 @@ export default function AddLinkForm() {
     setLoading(true);
     setMsg("");
 
+    // FRONTEND URL VALIDATION
+    try {
+      new URL(url);
+    } catch {
+      setMsg("Enter a valid URL.");
+      setLoading(false);
+      return;
+    }
+
     const res = await createLink({ url, code });
 
     if (res.error) {
-      setMsg(res.error);
+      setMsg(res.error); // backend error like "code exists"
     } else {
       setMsg("Link created successfully!");
       setUrl("");
@@ -50,7 +59,7 @@ export default function AddLinkForm() {
         onChange={(e) => setCode(e.target.value)}
       />
 
-      <button disabled={loading}>
+      <button type="submit" className={styles.button} disabled={loading}>
         {loading ? "Creating..." : "Create"}
       </button>
 

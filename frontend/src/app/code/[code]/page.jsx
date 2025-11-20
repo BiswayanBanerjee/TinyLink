@@ -7,26 +7,36 @@ import styles from "./page.module.css";
 export default function StatsPage({ params }) {
   const { code } = params;
   const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);      // NEW
+  const [error, setError] = useState(null);          // NEW
 
   useEffect(() => {
-    fetchLinkStats(code).then((res) => {
-      setData(res);
-    });
+    async function load() {
+      try {
+        const res = await fetchLinkStats(code);
+        if (!res) setError("Link not found.");
+        else setData(res);
+      } catch (err) {
+        setError("Failed to load stats.");
+      } finally {
+        setLoading(false);
+      }
+    }
+    load();
   }, [code]);
 
-  if (data === null) {
+  if (loading) {
     return (
       <div className={styles.wrapper}>
-        <h1>Loading…</h1>
+        <h1>Loading Stats…</h1>
       </div>
     );
   }
 
-  if (!data) {
+  if (error) {
     return (
       <div className={styles.wrapper}>
-        <h1>Not Found</h1>
-        <p>No link exists with code: {code}</p>
+        <h1>{error}</h1>
       </div>
     );
   }

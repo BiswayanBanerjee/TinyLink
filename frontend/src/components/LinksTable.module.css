@@ -59,6 +59,7 @@
 /* RESPONSIVE DESIGN - MOBILE (table becomes cards)   */
 /* -------------------------------------------------- */
 @media (max-width: 768px) {
+
   .wrapper table,
   .wrapper thead,
   .wrapper tbody,
@@ -70,7 +71,8 @@
   }
 
   .wrapper thead {
-    display: none; /* hide table header */
+    display: none;
+    /* hide table header */
   }
 
   .wrapper tr {
@@ -122,4 +124,13 @@
   .actions button {
     flex: 1;
   }
+}
+
+.search {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 15px;
 }

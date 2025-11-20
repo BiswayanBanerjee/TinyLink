@@ -5,9 +5,9 @@
 A clean, responsive full-stack URL shortener similar to bit.ly.  
 Built according to the official TinyLink assignment specification.
 
-Live Demo: *<your deployed frontend URL>*  
-Backend API: *<your deployed backend URL>*  
-GitHub Repo: *<your repo URL>*  
+Live Demo: https://tiny-linkbybiswayan.vercel.app/
+Backend API: https://tinylink-backend-exol.onrender.com
+GitHub Repo: https://github.com/BiswayanBanerjee/TinyLink  
 Video Walkthrough: *<your video link>*  
 ChatGPT Transcript: *<your transcript link>*  
 
@@ -171,7 +171,7 @@ PORT=5000
 
 ## `.env.local` (Frontend)
 
-NEXT_PUBLIC_API_URL=https://your-backend-url.onrender.com
+NEXT_PUBLIC_API_URL=https://tiny-linkbybiswayan.vercel.app/
 
 
 ---
