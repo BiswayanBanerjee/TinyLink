@@ -1,16 +1,8 @@
-"use client";
-
-import { useEffect, useState } from "react";
 import { fetchLinkStats } from "@/lib/api";
 import styles from "./page.module.css";
 
-export default function StatsPage({ params }) {
-  const { code } = params;
-  const [data, setData] = useState(null);
-
-  useEffect(() => {
-    fetchLinkStats(code).then(setData);
-  }, [code]);
+export default async function StatsPage({ params }) {
+  const data = await fetchLinkStats(params.code);
 
   if (!data) {
     return (
