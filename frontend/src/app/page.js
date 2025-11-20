@@ -1,9 +1,14 @@
+"use client";
 import AddLinkForm from "@/components/AddLinkForm";
 import LinksTable from "@/components/LinksTable";
 import { fetchLinks } from "@/lib/api";
 
-export default async function Page() {
-  const links = await fetchLinks();
+export default function Page() {
+  const [links, setLinks] = useState([]);
+
+  useEffect(() => {
+    fetchLinks().then(setLinks);
+  }, []);
 
   return (
     <main style={{ padding: "40px", maxWidth: "900px", margin: "0 auto" }}>
