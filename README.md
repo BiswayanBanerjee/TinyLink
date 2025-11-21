@@ -8,8 +8,8 @@ Built according to the official TinyLink assignment specification.
 Live Demo: https://tiny-linkbybiswayan.vercel.app/
 Backend API: https://tinylink-backend-exol.onrender.com
 GitHub Repo: https://github.com/BiswayanBanerjee/TinyLink  
-Video Walkthrough: *<your video link>*  
-ChatGPT Transcript: *<your transcript link>*  
+Video Walkthrough: https://drive.google.com/file/d/1HRRMUBq2Wp9AGEjAqYHqpUePOtx64fir/view?usp=sharing 
+ChatGPT Transcript: https://chatgpt.com/share/692026c7-7dfc-800e-8fa2-64c970888778
 
 ---
 
