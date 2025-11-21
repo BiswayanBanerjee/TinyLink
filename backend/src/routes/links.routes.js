@@ -9,7 +9,6 @@ import validateUrl from "../middlewares/validateUrl.js";
 
 const router = Router();
 
-// Apply validation BEFORE create
 router.post("/", validateUrl, createLink);
 router.get("/", getAllLinks);
 router.get("/:code", getLinkStats);

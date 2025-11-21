@@ -2,20 +2,31 @@
 
 # TinyLink – URL Shortener (Take-Home Assignment)
 
+TinyLink is a full-stack URL shortener built as part of the official
+TinyLink take-home assignment. It includes link creation, redirects,
+stats tracking, a dashboard, and a dedicated stats page for each link.
+
 A clean, responsive full-stack URL shortener similar to bit.ly.  
 Built according to the official TinyLink assignment specification.
 
 Live Demo: https://tiny-linkbybiswayan.vercel.app/
 Backend API: https://tinylink-backend-exol.onrender.com
 GitHub Repo: https://github.com/BiswayanBanerjee/TinyLink  
-Video Walkthrough: https://drive.google.com/file/d/1HRRMUBq2Wp9AGEjAqYHqpUePOtx64fir/view?usp=sharing 
+Video Walkthrough: https://drive.google.com/file/d/1HRRMUBq2Wp9AGEjAqYHqpUePOtx64fir/view?usp=sharing
 ChatGPT Transcript: https://chatgpt.com/share/692026c7-7dfc-800e-8fa2-64c970888778
 
 ---
 
+# 🏗 System Architecture
+
+Frontend (Next.js) → Backend (Express + Prisma) → Neon PostgreSQL  
+ ↑  
+ Health Check ( /healthz )
+
 # 🚀 Features
 
 ## Core Functionality
+
 - Shorten long URLs
 - Optional custom short code (`[A-Za-z0-9]{6,8}`)
 - Validate URLs before saving
@@ -33,6 +44,7 @@ ChatGPT Transcript: https://chatgpt.com/share/692026c7-7dfc-800e-8fa2-64c9708887
 # 🧱 Tech Stack
 
 ### **Frontend**
+
 - Next.js App Router
 - CSS Modules (no external dependencies)
 - Responsive UI
@@ -40,6 +52,7 @@ ChatGPT Transcript: https://chatgpt.com/share/692026c7-7dfc-800e-8fa2-64c9708887
 - Polling for real-time updates
 
 ### **Backend**
+
 - Node.js + Express
 - Prisma ORM
 - PostgreSQL (Neon)
@@ -47,117 +60,83 @@ ChatGPT Transcript: https://chatgpt.com/share/692026c7-7dfc-800e-8fa2-64c9708887
 - Clean controllers + services architecture
 
 ### **Database**
-- Neon PostgreSQL  
+
+- Neon PostgreSQL
 - Prisma migrations
 
 ### **Hosting**
-- Frontend → Vercel  
-- Backend → Render  
+
+- Frontend → Vercel
+- Backend → Render
 - Database → Neon
 
 ---
 
 # 📄 Pages & Routes (Matches Assignment Spec)
 
-| Purpose | Path | Auth |
-|--------|------|------|
-| Dashboard | `/` | Public |
-| Stats Page | `/code/:code` | Public |
-| Redirect | `/:code` | Public |
-| Health Check | `/healthz` | Public |
+| Purpose      | Path          | Auth   |
+| ------------ | ------------- | ------ |
+| Dashboard    | `/`           | Public |
+| Stats Page   | `/code/:code` | Public |
+| Redirect     | `/:code`      | Public |
+| Health Check | `/healthz`    | Public |
 
 ---
 
 # 📡 API Endpoints (Exactly as required)
 
-| Method | Path | Description |
-|--------|------|-------------|
-| POST | `/api/links` | Create link (409 on duplicate) |
-| GET | `/api/links` | List all links |
-| GET | `/api/links/:code` | Stats for single code |
-| DELETE | `/api/links/:code` | Delete link |
+| Method | Path               | Description                    |
+| ------ | ------------------ | ------------------------------ |
+| POST   | `/api/links`       | Create link (409 on duplicate) |
+| GET    | `/api/links`       | List all links                 |
+| GET    | `/api/links/:code` | Stats for single code          |
+| DELETE | `/api/links/:code` | Delete link                    |
 
 ---
 
 # 📦 Project Structure
 
 ## Backend
-backend
-│               
-│
-└───src
-    │   app.js
-    │   index.js
-    │
-    ├───controllers
-    │       links.controller.js
-    │
-    ├───middlewares
-    │       validateUrl.js
-    │
-    ├───routes
-    │       health.routes.js
-    │       links.routes.js
-    │
-    ├───services
-    │       links.service.js
-    │
-    └───utils
-            db.js
-            generateCode.js
 
-
+backend/
+└── src
+├── app.js
+├── index.js
+├── controllers
+│ └── links.controller.js
+├── middlewares
+│ └── validateUrl.js
+├── routes
+│ ├── health.routes.js
+│ ├── links.routes.js
+│ └── redirect.routes.js
+├── services
+│ └── links.service.js
+└── utils
+├── db.js
+└── generateCode.js
 
 ## Frontend
 
-frontend
-│               
+frontend/
+└── src
+├── app
+│ ├── layout.js
+│ ├── globals.css
+│ ├── page.js # Dashboard
+│ └── code
+│ └── [code]
+│ ├── page.jsx # Stats Page
+│ └── page.module.css
 │
-└───src
-    ├───app
-    │   │   favicon.ico
-    │   │   globals.css
-    │   │   layout.js
-    ├───app
-    │   │   favicon.ico
-    │   │   globals.css
-    │   │   layout.js
-    │   │   favicon.ico
-    │   │   globals.css
-    │   │   layout.js
-    │   │   page.js
-    │   │
-    │   │   globals.css
-    │   │   layout.js
-    │   │   page.js
-    │   │
-    │   └───code
-    │   │   page.js
-    │   │
-    │   └───code
-    │   │
-    │   └───code
-    │   └───code
-    │       └───[code]
-    │       └───[code]
-    │               page.jsx
-    │               page.module.css
-    │               page.jsx
-    │               page.module.css
-    │
-    │               page.module.css
-    │
-    │
-    ├───components
-    │       AddLinkForm.jsx
-    │       AddLinkForm.module.css
-    │       LinksTable.jsx
-    │       LinksTable.module.css
-    │
-    └───lib
-            api.js
-
-
+├── components
+│ ├── AddLinkForm.jsx
+│ ├── AddLinkForm.module.css
+│ ├── LinksTable.jsx
+│ └── LinksTable.module.css
+│
+└── lib
+└── api.js
 
 ---
 
@@ -168,11 +147,9 @@ frontend
 DATABASE_URL=postgresql://<user>:<password>@<host>/<db>?sslmode=require
 PORT=5000
 
-
 ## `.env.local` (Frontend)
 
 NEXT_PUBLIC_API_URL=https://tiny-linkbybiswayan.vercel.app/
-
 
 ---
 
@@ -180,19 +157,19 @@ NEXT_PUBLIC_API_URL=https://tiny-linkbybiswayan.vercel.app/
 
 According to the spec:
 
-1. **/healthz returns 200** ✔  
-2. **Create link works; duplicate → 409** ✔  
-3. **Redirect increments click count** ✔  
-4. **Delete stops redirect (404)** ✔  
-5. **UI meets expectations** ✔  
-   - Clean layout  
-   - Loading / error / empty states  
-   - Copy button  
-   - Responsive  
-   - Form validation  
-   - Consistent styling  
+# 📘 Assignment Requirements — Coverage
 
----
+- ✔ Short URL creation (POST /api/links)
+- ✔ Optional custom codes
+- ✔ Redirect from /:code
+- ✔ Click tracking + last clicked
+- ✔ Stats page per link ( /code/:code )
+- ✔ Dashboard page ( / )
+- ✔ Health check ( /healthz )
+- ✔ Clean UI, responsive, error & loading states
+- ✔ Auto-refresh dashboard
+- ✔ Auto-refresh stats page
+- ✔ Hosted backend + frontend
 
 # 📊 UI/UX Features
 
@@ -211,6 +188,7 @@ According to the spec:
 # 🚀 Running Locally
 
 ## Backend
+
 ```bash
 cd backend
 npm install
@@ -231,21 +209,26 @@ npm run dev
 Frontend runs at:
 http://localhost:3000
 
-🌐 Deployment
-Backend (Render)
 
-Create a Web Service
+# 🌐 Hosting
 
-Add DATABASE_URL environment variable
+- **Frontend:** Vercel (Next.js App Router)
+- **Backend:** Render (Node + Express)
+- **Database:** Neon PostgreSQL
 
-Deploy from GitHub
+The frontend communicates with the backend using
+`NEXT_PUBLIC_API_URL` environment variable.
 
-Enable auto-deploy
+A backend wake-up loader handles Render's cold start delay.
 
-Frontend (Vercel)
 
-Set NEXT_PUBLIC_API_URL
 
-Connect GitHub repo
+# 👨‍💻 Author
 
-Deploy
+**Biswayan Banerjee**
+Junior Full Stack Developer
+Kolkata, India
+
+GitHub: https://github.com/BiswayanBanerjee
+LinkedIn: https://www.linkedin.com/in/biswayan-banerjee
+```

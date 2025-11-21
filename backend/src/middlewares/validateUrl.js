@@ -6,7 +6,7 @@ export default function validateUrl(req, res, next) {
       return res.status(400).json({ error: "URL is required" });
     }
 
-    new URL(url); // throws if invalid
+    new URL(url);
 
     next();
   } catch (err) {

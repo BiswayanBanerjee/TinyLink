@@ -7,8 +7,8 @@ import { useEffect, useState } from "react";
 
 export default function Page() {
   const [links, setLinks] = useState([]);
-  const [loading, setLoading] = useState(true);   // NEW
-  const [error, setError] = useState(null);       // NEW
+  const [loading, setLoading] = useState(true);   
+  const [error, setError] = useState(null);       
 
   useEffect(() => {
     async function load() {

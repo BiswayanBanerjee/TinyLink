@@ -5,7 +5,7 @@ import { fetchLinkStats } from "@/lib/api";
 import styles from "./page.module.css";
 
 export default function StatsPage({ params }) {
-  const { code } = use(params);   // ⭐ FIXED HERE
+  const { code } = use(params);   
 
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
