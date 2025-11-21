@@ -100,43 +100,45 @@ Frontend (Next.js) → Backend (Express + Prisma) → Neon PostgreSQL
 
 backend/
 └── src
-├── app.js
-├── index.js
-├── controllers
-│ └── links.controller.js
-├── middlewares
-│ └── validateUrl.js
-├── routes
-│ ├── health.routes.js
-│ ├── links.routes.js
-│ └── redirect.routes.js
-├── services
-│ └── links.service.js
-└── utils
-├── db.js
-└── generateCode.js
+    ├── app.js
+    ├── index.js
+    ├── controllers
+    │   └── links.controller.js
+    ├── middlewares
+    │   └── validateUrl.js
+    ├── routes
+    │   ├── health.routes.js
+    │   ├── links.routes.js
+    │   └── redirect.routes.js
+    ├── services
+    │   └── links.service.js
+    └── utils
+        ├── db.js
+        └── generateCode.js
+
 
 ## Frontend
 
 frontend/
 └── src
-├── app
-│ ├── layout.js
-│ ├── globals.css
-│ ├── page.js # Dashboard
-│ └── code
-│ └── [code]
-│ ├── page.jsx # Stats Page
-│ └── page.module.css
-│
-├── components
-│ ├── AddLinkForm.jsx
-│ ├── AddLinkForm.module.css
-│ ├── LinksTable.jsx
-│ └── LinksTable.module.css
-│
-└── lib
-└── api.js
+    ├── app
+    │   ├── layout.js
+    │   ├── globals.css
+    │   ├── page.js               # Dashboard
+    │   └── code
+    │       └── [code]
+    │           ├── page.jsx      # Stats Page
+    │           └── page.module.css
+    │
+    ├── components
+    │   ├── AddLinkForm.jsx
+    │   ├── AddLinkForm.module.css
+    │   ├── LinksTable.jsx
+    │   └── LinksTable.module.css
+    │
+    └── lib
+        └── api.js
+
 
 ---
 
