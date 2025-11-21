@@ -91,7 +91,15 @@ export default function LinksTable({ links }) {
             ) : (
               filtered.map((link) => (
                 <tr key={link.code}>
-                  <td>{link.code}</td>
+                  <td>
+                    <span
+                      className={styles.codeBox}
+                      onClick={() => router.push(`/code/${link.code}`)}
+                    >
+                      {link.code}
+                    </span>
+                  </td>
+
                   <td className={styles.url}>{link.url}</td>
                   <td>{link.totalClicks}</td>
                   <td>
